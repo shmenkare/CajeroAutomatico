@@ -1,0 +1,9 @@
+CajeroAutomatico.csproj
+CajeroAutomatico.sln
+CajeroAutomatico.suo
+.gitattributes
+Properties/
+bin/
+obj/
+App.config
+.vs/
