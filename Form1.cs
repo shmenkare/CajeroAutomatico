@@ -1,9 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CajeroAutomatico
@@ -15,25 +17,27 @@ namespace CajeroAutomatico
             InitializeComponent();
         }
         
-        double resultado, importe;
-
-        Cliente CliActual = new Cliente();
-
         private void Form1_Load(object sender, EventArgs e)
         {
             
         }
+        double resultado, importe;
+
+        Cliente CliActual = new Cliente();
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if((txtDNI.Text == CliActual.DNI) && (txtClave.Text == CliActual.clave))
             {
                 panel1.Visible = true;
+                
                 string CajaAhorros = Cliente.ca;
 
                 iblCliente.Text = CliActual.apellido + "," + CliActual.nombres + ", CA: " + CajaAhorros;
 
                 iblSaldo.Text = "$ " + Convert.ToString(Cliente.saldo);
+                
                 txtImpOpe.Focus();
             }
             else
@@ -42,7 +46,6 @@ namespace CajeroAutomatico
                 txtDNI.Text = "";
                 txtClave.Text = "";
                 txtDNI.Focus();
-            
             }
         }
         private void RealizoOperacion(int tOpe)
@@ -50,7 +53,7 @@ namespace CajeroAutomatico
             switch (tOpe)
             {
                 case 1:
-                    {
+                    
                         if (txtImpOpe.Text != "")
                         {
                             importe = Convert.ToDouble(txtImpOpe.Text);
@@ -62,9 +65,9 @@ namespace CajeroAutomatico
                             txtImpOpe.Text = "";
                         }
                         break;
-                    }
+                    
                 case 2:
-                    {
+                    
                         if (txtImpOpe.Text != "")
                         {
                             importe = Convert.ToDouble(txtImpOpe.Text);
@@ -86,12 +89,10 @@ namespace CajeroAutomatico
                             MessageBox.Show("Error en el ingreso del importe. Verifiquelo!");
                             txtImpOpe.Focus();
                         }
-                        
-                    }
-                    break;
+                        break;
 
                 case 3:
-                    {
+                    
                         DialogResult result;
                         MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                         string mensaje = "Desea salir de las operaciones?";
@@ -113,9 +114,7 @@ namespace CajeroAutomatico
 
                             }
                         }
- 
-                    }
-                    break;
+                        break;
             
             }
         
@@ -133,11 +132,5 @@ namespace CajeroAutomatico
         {
             RealizoOperacion(3);
         }
-
-       
-
-        
-
-        
     }
 }
